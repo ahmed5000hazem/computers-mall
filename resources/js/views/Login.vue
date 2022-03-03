@@ -18,6 +18,7 @@
 </template>
 <script>
 import * as AuthServices from '../services/AuthService'
+import {store} from '../store/'
 export default {
     data() {
         return {

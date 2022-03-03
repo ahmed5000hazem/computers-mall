@@ -7,17 +7,17 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <li class="nav-item">
+        <li class="nav-item" v-if="isAuth">
           <router-link to="/profile" class="nav-link" aria-current="page" href="#">Profile</router-link>
         </li>
-        <li class="nav-item">
+        <li class="nav-item" v-if="!isAuth">
           <router-link to="/login" class="nav-link" href="#">Login</router-link>
         </li>
-        <li class="nav-item">
+        <li class="nav-item" v-if="!isAuth">
           <router-link to="/sign-up" class="nav-link" href="#">Sign Up</router-link>
         </li>
-        <li class="nav-item">
-          <router-link @click.prevent="logout" to="/logout" class="nav-link" href="#">Logout</router-link>
+        <li class="nav-item" v-if="isAuth">
+          <router-link @click.prevent="logout" to="/logout" class="nav-link">Logout</router-link>
         </li>
       </ul>
     </div>
@@ -25,11 +25,22 @@
 </nav>
 </template>
 <script>
+import {store} from '../store'
 export default {
-    methods:{
-        logout(){
-            
-        }
+  data(){
+    return {
+      
     }
+  },
+  computed:{
+    isAuth() {
+      return store.getters.auth
+    }
+  },
+  methods:{
+    logout(){
+      
+    }
+  }
 }
 </script>

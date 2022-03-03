@@ -36,7 +36,7 @@ class AuthController extends Controller
             return $this->getResponse("something went wrong there are some invalid data !!!", $errors->all(), true);
         }
 
-        if (auth()->attempt($data)) {
+        if (auth()->attempt($data, true)) {
             $token = auth()->user()->createToken("AUTH_TOKEN");
             
             return $this->getResponse(
